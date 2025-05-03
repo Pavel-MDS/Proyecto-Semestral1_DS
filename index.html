@@ -12,7 +12,8 @@
       <h1>EmprendeLocal</h1>
       <nav>
         <ul>
-          <li><a href="#" data-page="registro.html">Registro</a></li>
+          <li><a href="#" data-page="inicio.html">Inicio</a></li>
+          <li><a href="#" data-page="registro.html">Registrarce</a></li>
           <li><a href="#" data-page="productos.html">Productos</a></li>
           <li><a href="#" data-page="servicios.html">Servicios</a></li>
           <li><a href="#" data-page="nosotros.html">Nosotros</a></li>
@@ -23,10 +24,7 @@
   </header>
 
   <main id="contenido-principal">
-    <section class="bienvenida">
-      <h2>Plataforma Web para la Difusión de Emprendimientos Locales</h2>
-      <p>Apoya a los pequeños negocios y descubre productos y servicios de tu comunidad.</p>
-    </section>
+    <!-- El contenido dinámico se cargará aquí -->
   </main>
 
   <footer>
@@ -37,15 +35,29 @@
     const enlaces = document.querySelectorAll("a[data-page]");
     const contenedor = document.getElementById("contenido-principal");
 
-    enlaces.forEach(enlace => {
-      enlace.addEventListener("click", async e => {
-        e.preventDefault();
-        const pagina = enlace.getAttribute("data-page");
+    async function cargarPagina(pagina) {
+      try {
         const respuesta = await fetch(pagina);
         const contenido = await respuesta.text();
         contenedor.innerHTML = contenido;
-        window.scrollTo(0, 0); // Regresa arriba al cambiar de sección
+        window.scrollTo(0, 0);
+      } catch (error) {
+        contenedor.innerHTML = "<p>Error al cargar la página.</p>";
+      }
+    }
+
+    // Manejar clicks
+    enlaces.forEach(enlace => {
+      enlace.addEventListener("click", e => {
+        e.preventDefault();
+        const pagina = enlace.getAttribute("data-page");
+        cargarPagina(pagina);
       });
+    });
+
+    // Cargar "inicio.html" al abrir por primera vez
+    window.addEventListener("DOMContentLoaded", () => {
+      cargarPagina("inicio.html");
     });
   </script>
 </body>

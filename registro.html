@@ -1,16 +1,15 @@
-<h2>Registro de Emprendimiento</h2>
-<form id="form-registro">
-  <label>Nombre del producto o servicio</label>
-  <input type="text" name="nombre" required>
+<section class="registro">
+  <h2>Registro de Usuarios</h2>
+  <form>
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required />
 
-  <label>Descripción</label>
-  <textarea name="descripcion" required></textarea>
+    <label for="email">Correo electrónico:</label>
+    <input type="email" id="email" name="email" required />
 
-  <label>Precio</label>
-  <input type="number" name="precio" required>
+    <label for="contrasena">Contraseña:</label>
+    <input type="password" id="contrasena" name="contrasena" required />
 
-  <label>Categoría</label>
-  <input type="text" name="categoria" required>
-
-  <button type="submit">Registrar</button>
-</form>
+    <button type="submit">Registrar</button>
+  </form>
+</section>
