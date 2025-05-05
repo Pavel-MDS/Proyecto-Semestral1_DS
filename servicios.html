@@ -1,11 +1,59 @@
 <section class="servicios">
   <h2>Servicios Ofrecidos</h2>
-  <div class="servicio">
-    <h3>Servicio 1</h3>
-    <p>Descripción del servicio 1</p>
-  </div>
-  <div class="servicio">
-    <h3>Servicio 2</h3>
-    <p>Descripción del servicio 2</p>
+
+  <!-- Contenedor de servicios en forma de grid responsivo -->
+  <div class="servicios-grid">
+    
+    <!-- Cada servicio incluye imagen, título y botón -->
+    <div class="servicio">
+      <img src="img/servicio1.jpeg" alt="Servicio 1" />
+      <h3>Peluquería Canina</h3>
+      <button onclick="mostrarDetalle(0)">Ver más</button>
+    </div>
+
+    <div class="servicio">
+      <img src="img/servicio2.jpeg" alt="Servicio 2" />
+      <h3>Clases de Guitarra</h3>
+      <button onclick="mostrarDetalle(1)">Ver más</button>
+    </div>
+
+    <div class="servicio">
+      <img src="img/servicio3.jpeg" alt="Servicio 3" />
+      <h3>Reparación de Celulares</h3>
+      <button onclick="mostrarDetalle(2)">Ver más</button>
+    </div>
+
+    <div class="servicio">
+      <img src="img/servicio4.jpeg" alt="Servicio 4" />
+      <h3>Decoración de Fiestas</h3>
+      <button onclick="mostrarDetalle(3)">Ver más</button>
+    </div>
+
+    <div class="servicio">
+      <img src="img/servicio5.jpeg" alt="Servicio 5" />
+      <h3>Clases de Cocina</h3>
+      <button onclick="mostrarDetalle(4)">Ver más</button>
+    </div>
+
+    <div class="servicio">
+      <img src="img/servicio6.jpeg" alt="Servicio 6" />
+      <h3>Diseño de Páginas Web</h3>
+      <button onclick="mostrarDetalle(5)">Ver más</button>
+    </div>
+
   </div>
 </section>
+
+<!-- Modal de información de servicio -->
+<div id="modal-detalle" class="modal oculto">
+  <div class="modal-contenido">
+    <span class="cerrar" onclick="cerrarModal()">&times;</span>
+    <h3 id="modal-titulo"></h3>
+    <p id="modal-descripcion"></p>
+    <p><strong>Costo:</strong> <span id="modal-costo"></span></p>
+    <p><strong>Tiempo estimado:</strong> <span id="modal-tiempo"></span></p>
+    <p><strong>Ubicación:</strong> <span id="modal-ubicacion"></span></p>
+    <button onclick="contactar()">Contactar</button>
+    
+  </div>
+</div>
