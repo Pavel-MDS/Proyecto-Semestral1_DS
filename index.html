@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EmprendeLocal</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>EmprendeLocal</h1>
+      <nav>
+        <ul>
+          <li><a href="#" data-page="inicio.html">Inicio</a></li>
+          <li><a href="#" data-page="registro.html">Registrarce</a></li>
+          <li><a href="#" data-page="productos.html">Productos</a></li>
+          <li><a href="#" data-page="servicios.html">Servicios</a></li>
+          <li><a href="#" data-page="nosotros.html">Nosotros</a></li>
+          <li><a href="#" data-page="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido-principal">
+    <!-- El contenido dinámico se cargará aquí -->
+  </main>
+
+  <footer>
+    <p>&copy; 2025 EmprendeLocal. Todos los derechos reservados.</p>
+  </footer>
+
+  <script>
+    const enlaces = document.querySelectorAll("a[data-page]");
+    const contenedor = document.getElementById("contenido-principal");
+
+    async function cargarPagina(pagina) {
+      try {
+        const respuesta = await fetch(pagina);
+        const contenido = await respuesta.text();
+        contenedor.innerHTML = contenido;
+        window.scrollTo(0, 0);
+      } catch (error) {
+        contenedor.innerHTML = "<p>Error al cargar la página.</p>";
+      }
+    }
+
+    // Manejar clicks
+    enlaces.forEach(enlace => {
+      enlace.addEventListener("click", e => {
+        e.preventDefault();
+        const pagina = enlace.getAttribute("data-page");
+        cargarPagina(pagina);
+      });
+    });
+
+    // Cargar "inicio.html" al abrir por primera vez
+    window.addEventListener("DOMContentLoaded", () => {
+      cargarPagina("inicio.html");
+    });
+  </script>
+</body>
+</html>
